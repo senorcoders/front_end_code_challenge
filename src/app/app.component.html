@@ -79,7 +79,8 @@
               </div>
               
               <div class="panel-footer">
-                <button class="btn btn-primary" ng-disabled="formSubmitted" type="submit" (click)="checkFormErrors(aForm)">Get Assistance</button>
+                <button class="btn btn-primary" [disabled]="formSubmitted" type="submit" (click)="checkFormErrors(aForm)">Get Assistance</button>
+                <span class="alert alert-warning" *ngIf="readyToSubmit">{{ readyToSubmit }}</span>
               </div>
             </div>
           </form>

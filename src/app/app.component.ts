@@ -17,6 +17,7 @@ export class AppComponent {
   services: any = [];
   formSubmitted: boolean = false;
   returnedStatus: any;
+  readyToSubmit: any;
   constructor (private _assistanceService: AssistanceService){}
   ngOnInit(){
 
@@ -54,6 +55,9 @@ export class AppComponent {
     
     // Watch for changes on the form
     this.aForm.valueChanges.subscribe((data) => {
+      this.returnedStatus = ""; // Reset returned info
+      this.readyToSubmit = ''; // Reset empty submit message
+      this.formSubmitted = false; // Since something changed allow user to resubmit form
       this.checkFormErrors(this.aForm);
     });
   }
@@ -89,7 +93,7 @@ export class AppComponent {
         this.returnedStatus = err.error.message
       })
     } else {
-      this.checkFormErrors(this.aForm);
+      this.readyToSubmit = "Please fill-in all required fields";
     }
   }
 }
