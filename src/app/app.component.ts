@@ -25,7 +25,7 @@ export class AppComponent {
     this.formErrors = {
       'firstName': '',
       'lastname': '',
-      'email': '',
+      'email': '', 
       'serviceType':'',
       'terms': ''
     }
@@ -33,9 +33,9 @@ export class AppComponent {
     this.aForm = new FormGroup({
       firstName: new FormControl('',Validators.required),
       lastName: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.email),
+      email: new FormControl('', [Validators.required, Validators.email]),
       serviceType: new FormControl('', Validators.required),
-      message: new FormControl(''),
+      message: new FormControl(''), // This should be required, but isn't marked on the wireframe
       terms: new FormControl('', Validators.requiredTrue)
     })
 
@@ -43,7 +43,7 @@ export class AppComponent {
     this.errorMessages = {
       'firstName': 'First name is required.',
       'lastName': 'Last name is required.',
-      'email': 'Please provide a valid email address.',
+      'email': 'Please provide a valid email address.', // with two validators two messages are possible here
       'serviceType': 'Choose a service from the dropdown.',
       'terms': 'You must accept the terms to continue'
     }
