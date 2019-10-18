@@ -1,27 +1,34 @@
-# Frontendchallenge
+# Assistance Front End Challenge
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
+Code challenge provided by Unite Us.  This project is a basic form with validation.  It makes 2 api calls and handles the results gracefully.
 
-## Development server
+## Getting Started
+Download the repo into a folder on your computer.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Prequisites
+> node > 8.0
+> npm > 6.0
 
-## Code scaffolding
+cd into the folder and run:
+> npm install
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Running your app
+WIth your api already running from the root folder type:
+> ng serve
 
-## Build
+Visit localhost:4200 in your browser
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+> Fill out the form and get assistance!
 
-## Running unit tests
+## Running tests
+Sorry, there aren't any tests to run.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Authors
+Kharron Reid & whoever made that wonderful fake_api
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+contact Kharron Reid at kharronreid@gmail.com
+
+## Acknowledgements
+Hats off to some of Columbias finest coffee and Oceansides freshest eggs
