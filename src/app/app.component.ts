@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {AssistanceService} from './services/assistance.service';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,13 @@ import {AssistanceService} from './services/assistance.service';
   providers: [AssistanceService]
 })
 export class AppComponent {
-  title = 'Assistance Request';
+  title = 'New Assistance Request';
   aForm: FormGroup;
   formErrors: any;
   errorMessages: any;
   services: any = [];
+  formSubmitted: boolean = false;
+  returnedStatus: any;
   constructor (private _assistanceService: AssistanceService){}
   ngOnInit(){
 
@@ -67,6 +70,7 @@ export class AppComponent {
   }
   onSubmit(): void {
     if (this.aForm.valid){
+      this.formSubmitted = true;
       let formInfo = this.aForm.value;
       let request = {
         "assistance_request": {
@@ -79,8 +83,14 @@ export class AppComponent {
           "description": formInfo.message
         }
       }
+      console.log("Request: ", request);
       this._assistanceService.postAssistance(request).subscribe((data) => {
-        console.log("Returned Data: ", data);
+        console.log("Success! Returned Data: ", data);
+        this.returnedStatus = data.message
+      },
+      err => {
+        this.returnedStatus = err.error.message
+        console.log("Error Status: ", err);
       })
     } else {
       this.checkFormErrors(this.aForm);

@@ -48,6 +48,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label" for="serviceType">Service Type</label>
                   <div class="col-sm-8">
+                      {{ formErrors.serviceType }}
                       <select class="custom-select" formControlName="serviceType" [ngClass]="{'has-error' : formErrors.serviceType }" (blur)="checkFormErrors(aForm)">
                           <option value="" disabled>Choose a service</option>
                           <option *ngFor="let service of services" value="{{ service.id }}">{{service.display_name}}</option>
@@ -78,11 +79,11 @@
               </div>
               
               <div class="panel-footer">
-                <button class="btn btn-primary" type="submit" (click)="checkFormErrors(aForm)">Submit</button>
+                <button class="btn btn-primary" ng-disabled="formSubmitted" type="submit" (click)="checkFormErrors(aForm)">Get Assistance</button>
               </div>
             </div>
           </form>
-
+          <div *ngIf="returnedStatus" class="alert alert-danger" role="alert">{{ returnedStatus }}</div>
     </div>
     <div class="col-sm-1"></div>
   </div>
