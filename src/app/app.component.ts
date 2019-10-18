@@ -63,7 +63,6 @@ export class AppComponent {
       let formItem = form_group.get(key);
       this.formErrors[key] = '';
       if (!formItem.valid && (formItem.touched || formItem.dirty)){
-        console.log("Errors: ", key);
         this.formErrors[key] = this.errorMessages[key]; 
       }
     })
@@ -83,18 +82,14 @@ export class AppComponent {
           "description": formInfo.message
         }
       }
-      console.log("Request: ", request);
       this._assistanceService.postAssistance(request).subscribe((data) => {
-        console.log("Success! Returned Data: ", data);
         this.returnedStatus = data.message
       },
       err => {
         this.returnedStatus = err.error.message
-        console.log("Error Status: ", err);
       })
     } else {
       this.checkFormErrors(this.aForm);
-      console.log("NOT READY");
     }
   }
 }
